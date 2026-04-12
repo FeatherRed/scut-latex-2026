@@ -478,6 +478,7 @@
     % \paragraph{}
     % \setlength{\baselineskip}{20pt}
     \@cabstract
+    \vspace{1.4ex}
     \paragraph{\heiti{关键词：}}\@ckeywords
 
 }
@@ -497,7 +498,7 @@
 
     % F5 英文摘要标题，加粗三号全部大写
     \zihao{-2}
-    \vspace*{-6.2ex}
+    \vspace*{-5.2ex}
     \centerline{Abstract}
     \vspace*{1.24ex}
 
@@ -505,6 +506,7 @@
     % F7 英文关键词，小四号，加粗
     \zihao{-4}
     \@eabstract
+    \vspace*{1.3ex}
     \paragraph{\textbf{Keywords:}}\@ekeywords
 }
 
