@@ -18,7 +18,7 @@
 ├── docs/               # 存放各章节正文 (.tex)
 ├── fonts/              # 字体文件夹
 ├── image/              # 论文插图存放路径
-├── reference/          # 参考文献 BibTeX 文件
+├── reference/          # 官方参考文献模板
 ├── main.tex            # 论文入口主文件
 ├── scutthesis.cls      # 模板类定义文件 (核心样式)
 ├── title.png           # 校名校徽 Logo
