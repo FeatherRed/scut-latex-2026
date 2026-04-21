@@ -5,7 +5,7 @@
 % ---------------------------------------------------------
 % 作者: FeatherRed (masijie9@gmail.com)
 % 版本: 2026-v1.0.0 (基于 49ebbdf 分支优化)
-% 最后更新: 2026-04-12
+% 最后更新: 2026-04-21
 
 % 定义模板样式
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
@@ -27,7 +27,8 @@
     12pt,
     openany,
     zihao=-4,
-    linespread=1.697
+    linespread=1.697,
+    fontset=none
 ]{ctexbook}
 
 
@@ -127,8 +128,8 @@
 \setCJKfamilyfont{zhsong}{AdobeSongStd-Light.otf}
 [
     Path = ./fonts/,
-    BoldFont   = AdobeHeitiStd-Regular.otf,
-    ItalicFont = AdobeKaitiStd-Regular.otf
+    AutoFakeBold,
+    AutoFakeSlant
 ]
 \setCJKfamilyfont{zhhei}{AdobeHeitiStd-Regular.otf}%AdobeHeitiStd-Regular.otf
 [
@@ -148,6 +149,11 @@
     AutoFakeBold,
     AutoFakeSlant
 ]
+
+\newcommand{\songti}{\CJKfamily{zhsong}}
+\newcommand{\heiti}{\CJKfamily{zhhei}}
+\newcommand{\kaishu}{\CJKfamily{zhkai}}
+\newcommand{\fangsong}{\CJKfamily{zhfs}}
 
 \newfontfamily\calibri[
     Path = ./fonts/,
@@ -506,7 +512,7 @@
     % F7 英文关键词，小四号，加粗
     \zihao{-4}
     \@eabstract
-    \vspace*{1.3ex}
+    \vspace{1.3ex}
     \paragraph{\textbf{Keywords:}}\@ekeywords
 }
 
