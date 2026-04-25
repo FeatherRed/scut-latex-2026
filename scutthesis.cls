@@ -1,13 +1,11 @@
 % SCUT-Latex-2026: 华南理工大学本科生毕业论文 2026届 LaTeX 模板
 % ---------------------------------------------------------
 % 本模板基于开源项目 ShevonKuan/SCUT-thesis (verson: 49ebbdf) 进行优化
-% 主要优化：2026版校准，1.5倍行距重新设置
 % ---------------------------------------------------------
 % 作者: FeatherRed (masijie9@gmail.com)
-% 版本: 2026-v1.0.0 (基于 49ebbdf 分支优化)
-% 最后更新: 2026-04-21
+% 版本: 2026-v1.0.1 (基于 49ebbdf 分支优化)
+% 最后更新: 2026-04-25
 
-% 定义模板样式
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
 \ProvidesClass{scutthesis}[South Chine University of Technology undergraduate thesis document class © FeatherRed 2026]
 \newcommand{\newclearpage}{\clearpage} % 设置文章为电子版格式（不添加多余空白页）
@@ -155,6 +153,12 @@
 \newcommand{\kaishu}{\CJKfamily{zhkai}}
 \newcommand{\fangsong}{\CJKfamily{zhfs}}
 
+\newfontfamily\songtinum[
+    Path = ./fonts/,
+    UprightFont = simsun.ttf,
+    AutoFakeBold
+]{simsun}
+
 \newfontfamily\calibri[
     Path = ./fonts/,
     UprightFont = calibri.ttf,
@@ -232,22 +236,22 @@
 
 % F8 目录标题：小2号黑体居中
 \renewcommand{\cfttoctitlefont}{\hfill\zihao{-2}\heiti}
-\renewcommand{\cftlottitlefont}{\hfill\zihao{-2}\heiti}
-\renewcommand{\cftloftitlefont}{\hfill\zihao{-2}\heiti}
 
 % 如果要加粗，放 \bfseries
-% 目录中章节标题：四号宋体
-% F9 目录内容：宋体四号
-\renewcommand{\cftchapfont}{\bfseries\zihao{4}\songti}
-% \renewcommand{\cftchappagefont}{\bfseries\zihao{4}\songti}
+% 目录中章节标题：四号黑体，页码四号宋体
+% F9 目录内容
+\renewcommand{\cftchapfont}{\zihao{4}\heiti}
+\renewcommand{\cftchapleader}{\zihao{-4}\heiti\cftdotfill{\cftdotsep}}
+\renewcommand{\cftchappagefont}{\zihao{-4}\songtinum}
+\setlength{\cftbeforechapskip}{8.3pt}
 
-\renewcommand{\cftchappagefont}{\zihao{4}\songti}
-
-% 目录中其他内容：小四号宋体
-\renewcommand{\cftsecfont}{\zihao{-4}\songti}
-\renewcommand{\cftsecpagefont}{\zihao{-4}\songti}
-\renewcommand{\cftsubsecfont}{\zihao{-4}\songti}
-\renewcommand{\cftsubsecpagefont}{\zihao{-4}\songti}
+% 目录中其他内容：标题小四号宋体，页码小四号宋体
+\renewcommand{\cftsecfont}{\zihao{-4}\songtinum}
+\renewcommand{\cftsecpagefont}{\zihao{-4}\songtinum}
+\renewcommand{\cftsubsecfont}{\zihao{-4}\songtinum}
+\renewcommand{\cftsubsecpagefont}{\zihao{-4}\songtinum}
+\setlength{\cftbeforesecskip}{0.3pt}
+\setlength{\cftbeforesubsecskip}{0.3pt}
 \setlength{\cftsecindent}{2em}        % 小节缩进, 对齐章标题空隙
 \setlength{\cftsubsecindent}{4em}        % 子小节缩进, 对齐章标题空隙
 
@@ -276,6 +280,29 @@
 \renewcommand{\cftdotsep}{1.5}
 \renewcommand{\cftnodots}{\cftdotsep}
 \cftsetpnumwidth{1.2em}
+
+
+\renewcommand{\cftchapfillnum}[1]{%
+  {\cftchapleader}\nobreak
+  {\cftchappagefont #1}\cftchapafterpnum\par
+}
+\renewcommand{\cftsecfillnum}[1]{%
+  {\cftsecleader}\nobreak
+  {\cftsecpagefont #1}\cftsecafterpnum\par
+}
+\renewcommand{\cftsubsecfillnum}[1]{%
+  {\cftsubsecleader}\nobreak
+  {\cftsubsecpagefont #1}\cftsubsecafterpnum\par
+}
+\renewcommand{\cftfigfillnum}[1]{%
+  {\cftfigleader}\nobreak
+  {\cftfigpagefont #1}\cftfigafterpnum\par
+}
+\renewcommand{\cfttabfillnum}[1]{%
+  {\cfttableader}\nobreak
+  {\cfttabpagefont #1}\cfttabafterpnum\par
+}
+
 
 % 目录标题到目录正文的间距调整
 \setlength{\cftaftertoctitleskip}{0.5cm}
@@ -537,6 +564,7 @@
 
     \addcontentsline{toc}{chapter}{目\hspace{\ccwd}录}
     \renewcommand{\contentsname}{\centerline{目\hspace{\ccwd}录}}
+    \setlength{\cftaftertoctitleskip}{0.5em}
     \tableofcontents
     \newclearpage
 }
@@ -565,8 +593,8 @@
           format={\centering\zihao{-2}\heiti},
           nameformat = {\zihao{-2}\heiti},
           aftername = \hspace{0.5em},
-          beforeskip = {11.5pt},
-          afterskip = {25.2pt},
+          beforeskip = {12pt},
+          afterskip = {24.7pt},
           name = {第,章},
           number={\chinese{chapter}},
           titleformat = {\zihao{-2}\heiti}
@@ -607,17 +635,20 @@
     \setcounter{chapter}{0}
     \setcounter{section}{0}
 
+    \renewcommand{\thesection}{\arabic{section}}
+
     \ctexset {
         chapter = {
           fixskip = true,
           format={\centering\zihao{-2}\heiti},
           nameformat = {\zihao{-2}\heiti},
-          beforeskip = {10pt},
-          afterskip = {20pt},
+          beforeskip = {12pt},
+          afterskip = {24.7pt},
           titleformat = {\zihao{-2}\heiti}
          },
         section = {
           format = {\zihao{-3}\heiti},
+          number = {\arabic{section}.}, 
           aftername = \hspace{0.5em},
           nameformat = {\zihao{-3}\heiti},
           titleformat = {\zihao{-3}\heiti},
@@ -642,9 +673,23 @@
                 afterskip = {0.5\baselineskip plus 0.1\baselineskip minus 0.1\baselineskip},
             }
     }
-
-
 }
+
+
+% 定义第一章专用的命令：只有后面的间距 (例如 2.0pt)
+\newcommand{\firstchapter}[1]{
+    \chapter{#1}
+    \addtocontents{toc}{\protect\vspace{2.0pt}}
+}
+
+% 定义其他章专用的命令：包含前面的缩进 (例如 -4.0pt) 和后面的间距 (例如 3.5pt)
+\newcommand{\otherchapter}[1]{
+    \addtocontents{toc}{\protect\vspace{-3.0pt}}
+    \chapter{#1}
+    \addtocontents{toc}{\protect\vspace{2.5pt}}
+}
+
+
 
 
 
