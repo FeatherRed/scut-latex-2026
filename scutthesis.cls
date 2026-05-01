@@ -3,8 +3,8 @@
 % 本模板基于开源项目 ShevonKuan/SCUT-thesis (verson: 49ebbdf) 进行优化
 % ---------------------------------------------------------
 % 作者: FeatherRed (masijie9@gmail.com)
-% 版本: 2026-v1.0.1 (基于 49ebbdf 分支优化)
-% 最后更新: 2026-04-25
+% 版本: 2026-v1.0.2 (基于 49ebbdf 分支优化)
+% 最后更新: 2026-05-01
 
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
 \ProvidesClass{scutthesis}[South Chine University of Technology undergraduate thesis document class © FeatherRed 2026]

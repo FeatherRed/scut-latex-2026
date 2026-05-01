@@ -14,33 +14,15 @@
 
 ## 📝 更新日志
 
-### 2026/04/26
+### 2026/05/01
 
-**1. 修复目录阿拉伯数字字体问题**
+**1. 参考文献作者格式优化**
 
-学校提供的 Word 模板中，目录的阿拉伯数字竟然使用的是**宋体**而非 Times New Roman。为了精确还原，`fonts/` 目录下新增了对应的宋体字体文件（`simsun.ttf`），确保目录编号与 Word 模板一致。
+修改项目 [gbt7714-bibtex-style](https://github.com/zepinglee/gbt7714-bibtex-style) 的 `bst` 文件，将第 67 行设置为 `#0`，即可将英文文献作者格式调整为符合毕设模板要求的显示风格。
 
-**2. 优化目录各级标题间距**
+**2. 去除文献类型中的双斜杠问题**
 
-对目录中 Chapter、Section、Subsection 之间的垂直间距进行了精细调整，使目录排版更加紧凑美观，与官方模板对齐。
-
-> **注意：** 如果在某一章（Chapter）中，某个 Section 内使用了 Subsection，需要手动添加间距微调命令：
-> - 在**第一个** `\subsection` 之前添加：
->   ```latex
->   \addtocontents{toc}{\protect\vspace{-0.5pt}}
->   ```
-> - 在**最后一个** `\subsection` 结束后、下一个 `\section` 之前也需要添加：
->   ```latex
->   \addtocontents{toc}{\protect\vspace{-0.5pt}}
->   ```
->
-> 具体用法可参考 `docs/chap02.tex` 中的示例。
-
-**3. 修改结论部分**
-
-结论（Conclusion）章节现已调整为**带编号**的章节格式，同时对其在目录中的标题显示进行了相应适配。
-
-
+修改 `bst` 文件，调整了引用 `@inproceedings` 或 `@conference` 条目时， 参考文献出现 `//` 的问题，具体调整在第 214 行。
 
 ## 🚀 项目特点与优化
 
