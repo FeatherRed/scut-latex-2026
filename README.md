@@ -24,6 +24,18 @@
 
 修改 `bst` 文件，调整了引用 `@inproceedings` 或 `@conference` 条目时， 参考文献出现 `//` 的问题，具体调整在第 214 行。
 
+ **注意：** 如果在某一章（Chapter）中，某个 Section 内使用了 Subsection，需要手动添加间距微调命令：
+> - 在**第一个** `\subsection` 之前添加：
+>   ```latex
+>   \addtocontents{toc}{\protect\vspace{-0.5pt}}
+>   ```
+> - 在**最后一个** `\subsection` 结束后、下一个 `\section` 之前也需要添加：
+>   ```latex
+>   \addtocontents{toc}{\protect\vspace{-0.5pt}}
+>   ```
+>
+> 具体用法可参考 `docs/chap02.tex` 中的示例。
+
 ## 🚀 项目特点与优化
 
 **精确行距：** 针对学校要求的 1.5 倍行距，通过 linespread=1.697 进行底层校准。
