@@ -202,14 +202,19 @@
 \setlist[description]{nosep}
 
 % 默认页面页眉页脚样式
-\renewcommand{\chaptermark}[1]{\markboth{\songti 第{\chinese{chapter}}章~#1}{}}
+\renewcommand{\chaptermark}[1]{\markboth{\songti 第{\chinese{chapter}}章\hspace{0.5em}#1}{}}
 
 \fancypagestyle{plain}{% 样式中间变量
 }
+
 \fancypagestyle{main}{
     \fancyhf{}
-    \fancyhead[CE]{\zihao{5}\songti 华南理工大学学士学位论文}
-    \fancyhead[CO]{\zihao{5}\songti \leftmark}
+    \fancyhead[CE]{%
+        \smash{\raisebox{0pt}{\zihao{5}\songti 华南理工大学学士学位论文}}%
+    }
+    \fancyhead[CO]{%
+        \smash{\raisebox{0pt}{\zihao{5}\songti \leftmark}}%
+    }
     \fancyfoot[C]{\raisebox{3.8pt}{\zihao{5}\calibri \thepage}}
     \renewcommand{\headrulewidth}{1pt}
     \renewcommand{\footrulewidth}{0pt}
@@ -217,12 +222,12 @@
     \makeatletter
     \renewcommand{\headrule}{%
         \color{black}
-        \vspace{7pt}  % ← 这里控制往下移动多少
+        \vspace{6pt}
         \hrule width\headwidth height\headrulewidth
     }
-    
     \makeatother
 }
+
 \fancypagestyle{nohead}{
     \fancyfoot[C]{\raisebox{3.8pt}{\zihao{5}\calibri \thepage}}
     \fancyhead{}
@@ -601,19 +606,19 @@
          },
         section = {
           format = {\zihao{-3}\heiti},
-          aftername = \hspace{0.5em},
+          aftername = \hspace{0.15em},
           nameformat = {\zihao{-3}\heiti},
           titleformat = {\zihao{-3}\heiti},
-          beforeskip = {0.5\baselineskip},
-          afterskip = {0.5\baselineskip plus 0.3\baselineskip minus 0.3\baselineskip},
+          beforeskip = {0.28\baselineskip},
+          afterskip = {0.47\baselineskip},
          },
         subsection = {
                 format = {\zihao{4}\heiti},
-                aftername = \hspace{0.5em},
+                aftername = \hspace{0.6em},
                 nameformat = {\zihao{4}\heiti},
                 titleformat = {\zihao{4}\heiti},
-                beforeskip = {0.5\baselineskip},
-                afterskip = {0.5\baselineskip plus 0.1\baselineskip minus 0.1\baselineskip},
+                beforeskip = {0.36\baselineskip},
+                afterskip = {0.48\baselineskip},
             },
         subsubsection = {
                 fixskip = true,
@@ -622,7 +627,7 @@
                 nameformat = {\zihao{-4}\heiti},
                 titleformat = {\zihao{-4}\heiti},
                 beforeskip = {0.5\baselineskip},
-                afterskip = {0.5\baselineskip plus 0.1\baselineskip minus 0.1\baselineskip},
+                afterskip = {0.5\baselineskip},
             }
     }
     \zihao{-4}\songti
@@ -708,6 +713,7 @@
     \end{spacing}
     \endgroup
 }
+
 % 附录样式
 \renewcommand\appendix{\par
     \@mainmattertrue
