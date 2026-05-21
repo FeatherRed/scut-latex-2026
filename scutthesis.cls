@@ -87,8 +87,9 @@
 % % 字体设置
 
 \setmonofont{Consolas}
-\RequirePackage{newtxtext}
+% \RequirePackage{newtxtext}
 \RequirePackage{newtxmath, bm} % 用于设置数学公式字体
+\setmainfont{Times New Roman}
 
 
 \RequirePackage{ragged2e} % 实现两端对齐
@@ -100,58 +101,54 @@
 \usepackage{fontspec}
 % \newfontfamily\calibri{Calibri}
 
-
-
-
-
-
-\setCJKmainfont{AdobeSongStd-Light.otf}
-[
-    Path=./fonts/,
-    % BoldFont   =AdobeHeitiStd-Regular.otf,
-    % ItalicFont =AdobeKaitiStd-Regular.otf
-    AutoFakeBold,
-    AutoFakeSlant
-]
-\setCJKsansfont{AdobeHeitiStd-Regular.otf}
+\setCJKmainfont{simsun.ttf}
 [
     Path=./fonts/,
     AutoFakeBold,
     AutoFakeSlant
 ]
-\setCJKmonofont{AdobeFangsongStd-Regular.otf}
+
+\setCJKsansfont{simhei.ttf}
 [
-    Path =./fonts/,
+    Path=./fonts/,
+    AutoFakeBold,
+    AutoFakeSlant
 ]
-\setCJKfamilyfont{zhsong}{AdobeSongStd-Light.otf}
+% \setCJKmonofont{AdobeFangsongStd-Regular.otf}
+% [
+%     Path =./fonts/,
+% ]
+\setCJKfamilyfont{zhsong}{simsun.ttf}
 [
     Path = ./fonts/,
     AutoFakeBold,
     AutoFakeSlant
 ]
-\setCJKfamilyfont{zhhei}{AdobeHeitiStd-Regular.otf}%AdobeHeitiStd-Regular.otf
+\setCJKfamilyfont{zhhei}{simhei.ttf}%AdobeHeitiStd-Regular.otf
 [
     Path = ./fonts/,
     AutoFakeBold,
     AutoFakeSlant
 ]
-\setCJKfamilyfont{zhkai}{AdobeKaitiStd-Regular.otf}
-[
-    Path = ./fonts/,
-    AutoFakeBold,
-    AutoFakeSlant
-]
-\setCJKfamilyfont{zhfs}{AdobeFangsongStd-Regular.otf}
-[
-    Path = ./fonts/,
-    AutoFakeBold,
-    AutoFakeSlant
-]
+% \setCJKfamilyfont{zhkai}{AdobeKaitiStd-Regular.otf}
+% [
+%     Path = ./fonts/,
+%     AutoFakeBold,
+%     AutoFakeSlant
+% ]
+% \setCJKfamilyfont{zhfs}{AdobeFangsongStd-Regular.otf}
+% [
+%     Path = ./fonts/,
+%     AutoFakeBold,
+%     AutoFakeSlant
+% ]
+
+\newcommand{\simsun}{\CJKfamily{simsun}}
 
 \newcommand{\songti}{\CJKfamily{zhsong}}
 \newcommand{\heiti}{\CJKfamily{zhhei}}
-\newcommand{\kaishu}{\CJKfamily{zhkai}}
-\newcommand{\fangsong}{\CJKfamily{zhfs}}
+% \newcommand{\kaishu}{\CJKfamily{zhkai}}
+% \newcommand{\fangsong}{\CJKfamily{zhfs}}
 
 \newfontfamily\songtinum[
     Path = ./fonts/,
@@ -163,7 +160,7 @@
     Path = ./fonts/,
     UprightFont = calibri.ttf,
 ]{calibri}
-
+\xeCJKsetup{PunctStyle=quanjiao}
 
 % 插图和表格标题设置
 \RequirePackage[font=footnotesize,tableposition=top]{caption} % 设置插图和表格标题字体和位置
@@ -259,6 +256,9 @@
 \setlength{\cftbeforesubsecskip}{0.3pt}
 \setlength{\cftsecindent}{2em}        % 小节缩进, 对齐章标题空隙
 \setlength{\cftsubsecindent}{4em}        % 子小节缩进, 对齐章标题空隙
+
+\setlength{\cftsecnumwidth}{2.38em}   % 1.1 序号和文字的间距（默认一般是 2.3em 左右）
+\setlength{\cftsubsecnumwidth}{3em}  % 1.1.1 序号和文字的间距
 
 % 改成\calibri
 % \renewcommand{\cftsecfont}{\zihao{-4}\calibri}
@@ -399,7 +399,7 @@
             \zihao{1}
             \ \\
             \zihao{2}
-            \heiti{\@ctitle}
+            \textbf{\heiti{\@ctitle}}
             \ \\\ \\\ \\
         \end{center}
 
@@ -517,7 +517,7 @@
     % \setlength{\baselineskip}{20pt}
     \@cabstract
     \vspace{1.4ex}
-    \paragraph{\heiti{关键词：}}\@ckeywords
+    \paragraph{\heiti{关键词}{\songti ：} \hspace{-15pt}}\@ckeywords
 
 }
 
