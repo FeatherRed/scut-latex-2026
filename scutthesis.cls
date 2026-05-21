@@ -3,8 +3,8 @@
 % 本模板基于开源项目 ShevonKuan/SCUT-thesis (verson: 49ebbdf) 进行优化
 % ---------------------------------------------------------
 % 作者: FeatherRed (masijie9@gmail.com)
-% 版本: 2026-v1.0.2 (基于 49ebbdf 分支优化)
-% 最后更新: 2026-05-01
+% 版本: 2026-v1.0.3
+% 最后更新: 2026-05-21
 
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
 \ProvidesClass{scutthesis}[South Chine University of Technology undergraduate thesis document class © FeatherRed 2026]
@@ -698,15 +698,16 @@
 % 内容小五号宋体
 \newcommand\makereferences{
     \begingroup
-
+    \setlength{\bibsep}{0em}
     % 引用样式
     \bibliographystyle{gbt7714-numerical}
     % \nocite{*}
     % F15 参考文献内容 宋体五号
-    {\zihao{-4}\songti\bibliography{main}}    % 引用文献列表
+    \begin{spacing}{1.697}
+        {\zihao{-4}\songti\bibliography{main}}    % 引用文献列表
+    \end{spacing}
     \endgroup
 }
-
 % 附录样式
 \renewcommand\appendix{\par
     \@mainmattertrue
